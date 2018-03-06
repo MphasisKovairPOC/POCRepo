@@ -5,8 +5,8 @@
     <property name="tomcat.deployment" value="${tomcat}/webapps" />
     <property name="tomcat.bin" value="${tomcat}/bin" />
     <property name="base" value="." />
-    <property name="src.dir"     value="${base}/src"/>
-    <property name="build.dir"   value="${base}/build"/>
+    <property name="src.dir" value="${base}/src"/>
+    <property name="build.dir" value="${base}/build"/>
     <property name="classes.dir" value="${build.dir}/classes"/>
     <property name="pages" value="${base}/WebContent" />
     <path id="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath">
@@ -46,15 +46,20 @@
             classpathref="JavaDemoApp.classpath" includeantruntime="false" />
     </target>
     <target name="warTarget" depends="compile">
-        <war warfile="JavaDemoApp.war" webxml="WebContent/WEB-INF/web.xml" update="true" >
+        <war warfile="JavaDemoApp_Staging.war" webxml="WebContent/WEB-INF/web.xml" update="true" >
             <classes dir="${classes.dir}"/>
             <fileset dir="${pages}"/>
         </war>
-        <antcall target="deployTarget_Staging" />
+    	<war warfile="JavaDemoApp_Production.war" webxml="WebContent/WEB-INF/web.xml" update="true" >
+            <classes dir="${classes.dir}"/>
+            <fileset dir="${pages}"/>
+    	</war>
+        <antcall target="deployTarget" />
     </target>
-    <target name="deployTarget_Staging">
-        <copy file="${base}/JavaDemoApp.war" todir="C:/WARFiles/StagingWar"/>
-        <antcall target="deployTarget_Production" />
+    <target name="deployTarget">
+        <copy file="${base}/JavaDemoApp_Staging.war" todir="C:/WarFiles/StagingWar"/>
+    	<copy file="${base}/JavaDemoApp_Production.war" todir="C:/WarFiles/ProductionWar"/>
+        <!--antcall target="deployTarget_Production" /-->
     </target>
 	<target name="deployTarget_Production">
         <copy file="${base}/JavaDemoApp.war" todir="C:/WARFiles/ProductionWar"/>
