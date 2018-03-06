@@ -19,11 +19,12 @@
 		<property name="sonar.projectVersion" value="1.0" />
 		<property name="sonar.language" value="java" />
 		<property name="sonar.sources" value="src" />
-		<property name="sonar.binaries" value="target" />
+		<property name="sonar.binaries" value="WebContent" />
 		<property name="sonar.sourceEncoding" value="UTF-8" />   
 		<property name="sonar.jdbc.url" value="jdbc:jtds:sqlserver://SRVAZSTPTRVM17.corp.mphasis.com:1433/sonar;SelectMethod=Cursor" />
 		<property name="sonar.jdbc.username" value="sa" />
 		<property name="sonar.jdbc.password" value="Kovair@123" />
+		<property name="sonar.java.source" value="1.8" />   
 
 		<path id="Apache Tomcat v7.0 [Apache Tomcat v7.0].libraryclasspath">
 			<pathelement location="C:/Tomcat7079/lib/annotations-api.jar"/>
