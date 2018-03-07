@@ -4,7 +4,7 @@
               To include a user specific buildfile here, simply create one in the same
               directory with the processing instruction <?eclipse.ant.import?>
               as the first entry and export the buildfile again. -->
-	<project basedir="." default="all" name="DV1App" xmlns:sonar="antlib:org.sonar.ant">
+	<project basedir="." default="all" name="DevOpsPOC" xmlns:sonar="antlib:org.sonar.ant">
 		<property environment="env"/>
 		<property name="ECLIPSE_HOME" value="C:/eclipse"/>
 		<property name="debuglevel" value="source,lines,vars"/>
@@ -19,7 +19,8 @@
 		<property name="sonar.projectVersion" value="1.0" />
 		<property name="sonar.language" value="java" />
 		<property name="sonar.sources" value="src" />
-		<property name="sonar.binaries" value="WebContent" />
+		<property name="sonar.binaries" value="target" />
+		<property name="sonar.java.binaries" value="target/classes" />
 		<property name="sonar.sourceEncoding" value="UTF-8" />   
 		<property name="sonar.jdbc.url" value="jdbc:jtds:sqlserver://SRVAZSTPTRVM17.corp.mphasis.com:1433/sonar;SelectMethod=Cursor" />
 		<property name="sonar.jdbc.username" value="sa" />
@@ -88,8 +89,9 @@
 
 		<target name="sonar" depends="build">
 			<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
-				<!-- Update the following line, or put the "sonar-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+				<!--Update the following line, or put the "sonar-ant-task-*.jar" file in your "$HOME/.ant/lib" folder /-->
 				<classpath path="C:/JavaDemoApp/JavaDemoApp/sonar-ant-task-2.3.jar" />
+				<!--<classpath path="C:/sonar-ant-task-2.3.jar" />-->
 			</taskdef>           		
 			<!-- Execute Sonar -->
 			<sonar:sonar />
